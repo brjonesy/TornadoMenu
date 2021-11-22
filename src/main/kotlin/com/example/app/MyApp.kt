@@ -1,4 +1,4 @@
-package com.example
+package com.example.app
 
 import com.example.view.MainView
 import tornadofx.App

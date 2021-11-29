@@ -11,7 +11,7 @@ class InterfaceCreator {
         private const val PRIVATE_ID = 9973533
         private lateinit var allDrinks : Drinks
 
-        fun getAllDrinks() :Drinks{
+        fun getAllDrinks() : Drinks {
             val apiInterface = ApiInterface.create().getDrinks(Private_ID = PRIVATE_ID, Type = "Alcoholic")
             apiInterface.enqueue(object : Callback<Drinks> {
                 override fun onFailure(call: Call<Drinks>, t: Throwable) {

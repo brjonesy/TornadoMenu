@@ -17,6 +17,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "no.tornado:tornadofx:$tornadofx_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.9'
+    //Gson converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
 
 compileKotlin {

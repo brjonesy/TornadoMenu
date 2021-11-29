@@ -1,10 +1,13 @@
 package com.example.network
 
 import com.example.Drink
+import com.example.Drinks
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
     companion object {
@@ -19,6 +22,6 @@ interface ApiInterface {
         }
     }
 
-    @GET("/api/json/v2/9973533/filter.php?a=Alcoholic")
-    fun getDrinks(): Call<List<Drink>>
+    @GET("api/json/v2/{id}/filter.php")
+    fun getDrinks(@Path("id") Private_ID:Int, @Query("a") Type:String): Call<Drinks>
 }

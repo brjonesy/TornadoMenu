@@ -9,26 +9,27 @@ import retrofit2.Response
 class InterfaceCreator {
     companion object {
         private const val PRIVATE_ID = 9973533
-        lateinit var allDrinks : Drinks
+        private lateinit var allDrinks : Drinks
+
+        fun getAllDrinks() :Drinks{
+            val apiInterface = ApiInterface.create().getDrinks(Private_ID = PRIVATE_ID, Type = "Alcoholic")
+            apiInterface.enqueue(object : Callback<Drinks> {
+                override fun onFailure(call: Call<Drinks>, t: Throwable) {
+                    print("Nem mukodik \n$t")
+                }
+
+                override fun onResponse(call: Call<Drinks>, response: Response<Drinks>) {
+                    if (response.body() != null) {
+                        println("Mukodik")
+                        allDrinks = response.body()!!
+                    }
+                }
+            })
+
+            allDrinks.printDrinks()
+            return allDrinks
     }
 
-    fun createNewInterface() :Drinks{
-        val apiInterface = ApiInterface.create().getDrinks(Private_ID = PRIVATE_ID, Type = "Alcoholic")
-        apiInterface.enqueue(object : Callback<Drinks> {
-            override fun onFailure(call: Call<Drinks>, t: Throwable) {
-                print("Nem mukodik \n$t")
-            }
 
-            override fun onResponse(call: Call<Drinks>, response: Response<Drinks>) {
-                if (response.body() != null)
-                    println("Mukodik")
-
-                allDrinks = response.body()!!
-                allDrinks.printDrinks()
-
-
-            }
-        })
-        return allDrinks
     }
 }

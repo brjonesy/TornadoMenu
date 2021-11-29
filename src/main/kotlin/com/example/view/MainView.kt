@@ -9,9 +9,9 @@ import tornadofx.*
 
 class MainView : View("Hello TornadoFX") {
 
-    val newInterface: InterfaceCreator= InterfaceCreator
+    private val allDrinks: Drinks = InterfaceCreator.getAllDrinks()
     override val root = hbox {
-        label() {
+        label(allDrinks.drinks[5].strDrink) {
             addClass(Styles.heading)
         }
         }
